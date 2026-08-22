@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ばんげのまちゼミ|坂下のお店で、プロに学ぶ。</title>
+<meta name="description" content="会津坂下町のまちゼミ。町のお店の方が講師となり、プロの技を少しだけ教えてもらえる地域密着型のゼミナールです。">
+<meta property="og:title" content="ばんげのまちゼミ|坂下のお店で、プロに学ぶ。">
+<meta property="og:description" content="町のお店の方が講師となり、プロの技を少しだけ教えてもらえる地域密着型のゼミナール。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#E60D12; --red-deep:#C00A0F;
+  --ink:#23255C; --navy:#171A38;
+  --paper:#F7F6F1; --mist:#EBECF2; --white:#fff;
+  --line:rgba(35,37,92,.16);
+  --c-tsukuru:#2F9E44;   /* つくる・食べる */
+  --c-manabu:#E0407F;    /* まなぶ */
+  --c-kenko:#2B3A8F;     /* 健康・きれい */
+  --f-display:'Shippori Mincho B1','Hiragino Mincho ProN','Yu Mincho',serif;
+  --f-body:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Yu Gothic Medium',sans-serif;
+  --f-cond:'Barlow Condensed','Arial Narrow',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.9;font-size:15.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;top:0;left:0;right:0;height:3px;background:var(--red);z-index:120}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* header */
+.hd{position:fixed;top:3px;left:0;right:0;z-index:100;background:rgba(247,246,241,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.hd--s{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(23,26,56,.06)}
+.hd__in{max-width:1180px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:26px}
+.hd__brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.hd__logo{width:36px;height:36px}
+.hd__name{font-family:var(--f-display);font-weight:800;font-size:17px;letter-spacing:.06em;line-height:1.2}
+.hd__name small{display:block;font-family:var(--f-cond);font-weight:600;font-size:9.5px;letter-spacing:.24em;color:var(--red)}
+.hd__nav{display:flex;gap:24px;font-weight:500;font-size:14px}
+.hd__nav a{position:relative;padding:6px 0}
+.hd__nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--red);transform:scaleX(0);transform-origin:right;transition:transform .3s}
+.hd__nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.hd__cta{background:var(--red);color:#fff;font-weight:700;font-size:13.5px;padding:10px 18px;border-radius:2px;letter-spacing:.06em;white-space:nowrap;transition:background .25s,transform .25s}
+.hd__cta:hover{background:var(--red-deep);transform:translateY(-1px)}
+@media(max-width:940px){.hd__nav{display:none}.hd__name small{display:none}.hd__name{font-size:16px;white-space:nowrap}.hd__in{gap:14px;padding:0 16px}.hd__logo{width:32px;height:32px}.hd__cta{font-size:12.5px;padding:9px 14px}}
+@media(max-width:360px){.hd__name{font-size:14px}}
+
+/* hero */
+.hero{position:relative;padding:132px 24px 76px;max-width:1180px;margin:0 auto}
+.hero__in{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.hero__eyebrow{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:24px}
+.hero__badge{background:var(--red);color:#fff;font-weight:700;font-size:13px;letter-spacing:.12em;padding:5px 13px 6px;border-radius:2px}
+.hero__place{font-family:var(--f-display);font-weight:700;font-size:14px;letter-spacing:.28em}
+.hero__date{font-family:var(--f-cond);font-weight:600;font-size:15px;letter-spacing:.12em;color:var(--red);border-left:1px solid var(--line);padding-left:13px}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(40px,6.4vw,82px);line-height:1.22;letter-spacing:.045em}
+.hero h1 .mark{color:var(--red)}
+.hero__lede{margin-top:26px;max-width:33em;font-size:15.5px;color:rgba(35,37,92,.86)}
+.hero__cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:11px;font-weight:700;font-size:14.5px;letter-spacing:.08em;padding:15px 26px;border-radius:2px;transition:transform .25s,background .25s,color .25s}
+.btn .ar{font-family:var(--f-cond);transition:transform .25s}
+.btn:hover .ar{transform:translateX(4px)}
+.btn--red{background:var(--red);color:#fff;box-shadow:0 10px 26px rgba(230,13,18,.28)}
+.btn--red:hover{background:var(--red-deep);transform:translateY(-2px)}
+.btn--ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.hero__vis{position:relative}
+.collage{position:relative;width:100%;aspect-ratio:1/.94}
+.ph{position:absolute;background:#fff;padding:9px;box-shadow:0 22px 50px rgba(23,26,56,.18);border:1px solid rgba(35,37,92,.06)}
+.ph img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.ph--a{width:54%;left:0;top:5%;transform:rotate(-5deg)}
+.ph--b{width:50%;right:0;top:0;transform:rotate(4deg)}
+.ph--c{width:66%;left:14%;bottom:0;transform:rotate(-1.2deg);z-index:2}
+.seal{position:absolute;right:-8px;bottom:-14px;width:148px;height:148px;z-index:3;filter:drop-shadow(0 14px 26px rgba(192,10,15,.35))}
+.seal__bg{position:absolute;inset:0;background:var(--red);border-radius:50%}
+.seal__ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.seal__ring text{font-family:var(--f-body);font-weight:700;font-size:10px;fill:#fff;letter-spacing:1px}
+.seal__core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center}
+.seal__core::before{content:"";position:absolute;inset:29px;border:1px solid rgba(255,255,255,.5);border-radius:50%}
+.seal__core span{font-size:11px;font-weight:700;letter-spacing:.26em;text-indent:.26em}
+.seal__core strong{font-family:var(--f-display);font-weight:800;font-size:32px;line-height:1.15;letter-spacing:.08em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero__spine{position:absolute;top:142px;right:-8px;writing-mode:vertical-rl;font-family:var(--f-display);font-weight:700;font-size:16px;letter-spacing:.42em;padding-top:16px;border-top:3px solid var(--red)}
+@media(max-width:1279px){.hero__spine{display:none}}
+@media(max-width:960px){.hero{padding-top:108px}.hero__in{grid-template-columns:1fr;gap:56px}.hero__vis{max-width:520px;margin:0 auto;width:100%}}
+
+/* ticker */
+.ticker{background:var(--red);color:#fff;overflow:hidden;padding:12px 0}
+.ticker__track{display:flex;width:max-content;animation:tick 32s linear infinite}
+.ticker__group{display:flex;align-items:center;white-space:nowrap}
+.ticker__group span{font-weight:700;font-size:14px;letter-spacing:.14em;padding:0 24px;position:relative}
+.ticker__group span::after{content:"●";position:absolute;right:-6px;font-size:7px;top:50%;transform:translateY(-50%);opacity:.7}
+.ticker__group .num{font-family:var(--f-cond);font-weight:600;font-size:16px;letter-spacing:.08em;font-style:normal}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* sections */
+.section{padding:96px 24px}
+.wrap{max-width:1120px;margin:0 auto}
+.sec-head{margin-bottom:48px}
+.sec-head .eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-cond);font-weight:600;font-size:14px;letter-spacing:.28em;color:var(--red);margin-bottom:13px}
+.sec-head .eyebrow::before{content:"";width:32px;height:2px;background:var(--red)}
+.sec-head h2{font-family:var(--f-display);font-weight:800;font-size:clamp(29px,4.3vw,44px);letter-spacing:.05em;line-height:1.3}
+.sec-head h2 .mark{color:var(--red)}
+.sec-head .lead{margin-top:18px;max-width:42em;color:rgba(35,37,92,.85)}
+
+/* about */
+.about__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);padding:36px 28px 32px;position:relative;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(23,26,56,.1)}
+.card h3{font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:.05em;margin-bottom:12px;line-height:1.5}
+.card p{font-size:14.5px;color:rgba(35,37,92,.85)}
+.card .idx{position:absolute;top:24px;right:24px;font-family:var(--f-cond);font-weight:600;font-size:14px;letter-spacing:.16em;color:var(--red)}
+@media(max-width:860px){.about__cards{grid-template-columns:1fr}}
+
+/* ===== 講座一覧 ===== */
+.courses{background:var(--mist)}
+.filter{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:30px}
+.chip{font-family:var(--f-body);font-weight:700;font-size:13.5px;letter-spacing:.06em;padding:10px 20px;background:#fff;border:1px solid var(--line);border-radius:100px;cursor:pointer;color:var(--ink);transition:background .2s,color .2s,border-color .2s;display:inline-flex;align-items:center;gap:8px}
+.chip .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip[data-cat="tsukuru"] .dot{background:var(--c-tsukuru)}
+.chip[data-cat="manabu"] .dot{background:var(--c-manabu)}
+.chip[data-cat="kenko"] .dot{background:var(--c-kenko)}
+
+.cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media(max-width:820px){.cgrid{grid-template-columns:1fr}}
+.course{background:#fff;border:1px solid var(--line);border-left:5px solid var(--cc,var(--red));padding:0;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;scroll-margin-top:90px}
+.course[hidden]{display:none}
+.course:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(23,26,56,.09)}
+.course.hl{box-shadow:0 0 0 3px var(--red),0 20px 40px rgba(23,26,56,.14)}
+.course__ph{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#EDEDF1;border-bottom:1px solid var(--line)}
+.course__ph img{width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.course:hover .course__ph img{transform:scale(1.04)}
+.course__ph.is-contain{background:#fff}
+.course__ph.is-contain img{object-fit:contain;transform:none!important}
+.course__top{padding:24px 26px 0;display:flex;align-items:flex-start;gap:14px}
+.course__ph+.course__top{padding-top:20px}
+.course__no{font-family:var(--f-cond);font-weight:700;font-size:15px;color:#fff;background:var(--cc);min-width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;letter-spacing:.04em}
+.course__hd{flex:1}
+.course__cat{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--cc);border:1px solid currentColor;padding:1px 8px 2px;border-radius:100px;margin-bottom:7px}
+.course h3{font-family:var(--f-display);font-weight:800;font-size:20.5px;line-height:1.45;letter-spacing:.03em}
+/* 講座の軽い説明 */
+.course__desc{padding:16px 26px 0;font-size:14.3px;line-height:1.85;color:rgba(35,37,92,.86)}
+.course__when{margin:18px 26px 0;background:#F7F6F1;border:1px solid var(--line);padding:14px 16px}
+.course__slot+.course__slot{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.course__time{font-family:var(--f-cond);font-weight:700;font-size:17px;letter-spacing:.06em;color:var(--cc);margin-bottom:5px}
+.course__days{display:flex;flex-wrap:wrap;gap:6px}
+.course__day{font-size:12.5px;font-weight:700;background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:2px;letter-spacing:.02em}
+.course__daynote{font-size:13.5px;font-weight:500;line-height:1.75}
+.course__spec{margin:16px 26px 0;display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13.4px}
+.course__spec dt{font-weight:700;color:rgba(35,37,92,.55);white-space:nowrap}
+.course__spec dd{color:rgba(35,37,92,.9)}
+.course__pills{margin:16px 26px 0;display:flex;gap:9px;flex-wrap:wrap}
+.pill{font-size:12.5px;font-weight:700;padding:6px 13px;border-radius:100px;letter-spacing:.03em}
+.pill--fee{background:rgba(230,13,18,.09);color:var(--red-deep)}
+.pill--cap{background:rgba(35,37,92,.08);color:var(--ink)}
+.pill--free{background:var(--red);color:#fff}
+.course__note{margin:14px 26px 0;font-size:12.6px;line-height:1.75;color:var(--red-deep);background:rgba(230,13,18,.05);border-left:2px solid var(--red);padding:8px 12px}
+.course__shop{margin-top:auto;padding:20px 26px 24px;border-top:1px solid var(--line);margin-top:22px}
+.course__shopsub{font-size:12px;font-weight:700;color:rgba(35,37,92,.55);letter-spacing:.04em}
+.course__shopname{font-family:var(--f-display);font-weight:800;font-size:18.5px;letter-spacing:.03em;line-height:1.5}
+.course__addr{font-size:12.6px;color:rgba(35,37,92,.7);margin-top:3px;line-height:1.7}
+/* 電話リンク(タップで発信) */
+.telbtn{margin-top:13px;display:flex;align-items:center;gap:12px;background:var(--navy);color:#fff;padding:13px 18px;border-radius:2px;min-height:52px;transition:background .25s,transform .25s}
+.telbtn:hover{background:var(--red);transform:translateY(-2px)}
+.telbtn__ic{width:24px;height:24px;flex-shrink:0}
+.telbtn__t{flex:1;line-height:1.35}
+.telbtn__t b{display:block;font-family:var(--f-cond);font-weight:700;font-size:22px;letter-spacing:.06em}
+.telbtn__t b.mail{font-family:var(--f-body);font-size:15px;letter-spacing:.01em;word-break:break-all;line-height:1.35}
+.telbtn__t b.frm{font-family:var(--f-body);font-size:17px;letter-spacing:.06em;line-height:1.35}
+.course__sub2{margin-top:9px;font-size:12.2px;color:rgba(35,37,92,.65);word-break:break-all}
+.course__sub2 a{color:var(--red-deep);border-bottom:1px solid rgba(192,10,15,.35)}
+.telbtn__t span{font-size:11px;letter-spacing:.1em;opacity:.75}
+.course__hours{font-size:11.8px;color:rgba(35,37,92,.6);margin-top:8px}
+.course__meta{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.tagchip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.08em;border:1px solid var(--line);color:rgba(35,37,92,.6);padding:5px 10px;border-radius:2px;line-height:1}
+.tagchip svg{width:13px;height:13px;flex-shrink:0}
+.tagchip--link{color:var(--ink);border-color:rgba(35,37,92,.3);transition:background .2s,color .2s,border-color .2s}
+.tagchip--link:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.tagchip .ex{font-family:var(--f-cond);font-size:12px;opacity:.65}
+.noresult{padding:50px 0;text-align:center;color:rgba(35,37,92,.6);font-weight:500}
+
+/* ===== カレンダー ===== */
+.calwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.month{background:#fff;border:1px solid var(--line);padding:20px 18px 18px}
+.month__t{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:.05em;margin-bottom:14px;display:flex;align-items:baseline;gap:8px}
+.month__t em{font-family:var(--f-cond);font-style:normal;font-weight:600;font-size:12px;letter-spacing:.18em;color:var(--red)}
+.month table{width:100%;border-collapse:collapse;table-layout:fixed}
+.month th{font-family:var(--f-cond);font-weight:600;font-size:12px;letter-spacing:.1em;color:rgba(35,37,92,.5);padding-bottom:7px}
+.month th.sun{color:var(--red)}
+.month th.sat{color:#2B6FCC}
+.month td{text-align:center;padding:2px;height:38px;vertical-align:top}
+.day{width:100%;height:34px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:500;border-radius:2px;color:rgba(35,37,92,.75);position:relative}
+.day.sun{color:var(--red)}
+.day.sat{color:#2B6FCC}
+.day.has{background:var(--navy);color:#fff;font-weight:700;cursor:pointer;transition:background .2s,transform .2s}
+.day.has:hover{background:var(--red);transform:scale(1.08)}
+.day__dots{display:flex;gap:2px;margin-top:1px;height:4px}
+.day__dots i{width:4px;height:4px;border-radius:50%;display:block}
+.callegend{margin-top:26px;display:flex;gap:20px;flex-wrap:wrap;font-size:13px;font-weight:500;align-items:center}
+.callegend .k{display:inline-flex;align-items:center;gap:7px}
+.callegend .k i{width:11px;height:11px;border-radius:50%}
+.calhint{margin-top:10px;font-size:12.8px;color:rgba(35,37,92,.6)}
+
+/* flyer */
+.flyer__grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.flyer__item{background:#fff;border:1px solid var(--line);padding:11px;cursor:zoom-in;transition:transform .3s,box-shadow .3s}
+.flyer__item:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(23,26,56,.14)}
+.flyer__item figcaption{display:flex;align-items:center;justify-content:space-between;padding:13px 5px 3px;font-weight:700;font-size:14px;letter-spacing:.06em}
+.flyer__item figcaption em{font-style:normal;font-family:var(--f-cond);font-weight:600;font-size:12px;letter-spacing:.18em;color:var(--red)}
+@media(max-width:820px){.flyer__grid{grid-template-columns:1fr}}
+.info{margin-top:40px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);padding:34px 38px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px 44px}
+.info dt{font-family:var(--f-cond);font-weight:600;font-size:13px;letter-spacing:.24em;color:var(--red);margin-bottom:3px}
+.info dd{font-weight:500;font-size:15px;line-height:1.7}
+.info dd strong{font-family:var(--f-display);font-weight:800;font-size:18.5px;letter-spacing:.04em}
+@media(max-width:820px){.info{grid-template-columns:1fr;padding:28px 24px}}
+
+/* scene */
+.scene{background:var(--navy);color:#fff}
+.scene .sec-head .eyebrow{color:#fff}
+.scene .sec-head h2 .mark{color:var(--red)}
+.scene .sec-head .lead{color:rgba(255,255,255,.72)}
+.scene__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.scene__grid figure{position:relative;overflow:hidden;background:#0e1128}
+.scene__grid figure:nth-child(3n+2){transform:translateY(24px)}
+.scene__grid img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1);cursor:zoom-in}
+.scene__grid figure:hover img{transform:scale(1.06)}
+.scene__foot{margin-top:58px;font-size:12.5px;color:rgba(255,255,255,.5)}
+@media(max-width:820px){.scene__grid{grid-template-columns:repeat(2,1fr)}.scene__grid figure:nth-child(3n+2){transform:none}.scene__grid figure:nth-child(2n){transform:translateY(18px)}}
+
+/* footer */
+.ft{background:var(--navy);color:#fff;padding:76px 24px 52px;text-align:center;position:relative}
+.ft__logo{width:56px;height:56px;margin:0 auto 16px}
+.ft__name{font-family:var(--f-display);font-weight:800;font-size:21px;letter-spacing:.1em}
+.ft__tag{font-family:var(--f-cond);font-weight:600;font-size:12px;letter-spacing:.32em;color:var(--red);margin-top:7px}
+.ft__org{margin-top:22px;font-size:13.5px;color:rgba(255,255,255,.8)}
+.ft__note{margin-top:26px;font-size:12px;color:rgba(255,255,255,.5)}
+.totop{position:absolute;right:32px;top:-25px;width:50px;height:50px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-cond);font-weight:600;font-size:18px;box-shadow:0 12px 26px rgba(192,10,15,.4);transition:transform .3s}
+.totop:hover{transform:translateY(-5px)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(14,16,38,.9);display:none;align-items:center;justify-content:center;padding:32px;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-width:min(1240px,96vw);max-height:92vh;background:#fff}
+.lb__x{position:absolute;top:20px;right:24px;width:44px;height:44px;border:0;border-radius:50%;background:var(--red);color:#fff;font-size:18px;cursor:pointer;font-family:var(--f-body)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hd" id="hd">
+  <div class="hd__in">
+    <a class="hd__brand" href="#top">
+      <img class="hd__logo" src="images/logo.svg" alt="まちゼミロゴ">
+      <span class="hd__name"><small>AIZUBANGE MACHI-ZEMI</small>ばんげのまちゼミ</span>
+    </a>
+    <nav class="hd__nav">
+      <a href="#about">まちゼミとは</a>
+      <a href="#courses">講座一覧</a>
+      <a href="#calendar">開催カレンダー</a>
+      <a href="#flyer">チラシ</a>
+    </nav>
+    <a class="hd__cta" href="#courses">講座をさがす</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero__in">
+      <div>
+        <p class="hero__eyebrow rv">
+          <span class="hero__badge" data-f="edition"></span>
+          <span class="hero__place">会津坂下町</span>
+          <span class="hero__date" data-f="periodShort"></span>
+        </p>
+        <h1 class="rv rv-d1">坂下のお店で、<br>プロに学ぶ<span class="mark">。</span></h1>
+        <p class="hero__lede rv rv-d2">「まちゼミ」は、町のお店の方が講師となり、プロの技を少しだけ教えてもらえる地域密着型のゼミナールです。</p>
+        <div class="hero__cta rv rv-d2">
+          <a class="btn btn--red" href="#courses">講座一覧をみる <span class="ar">→</span></a>
+          <a class="btn btn--ghost" href="#calendar">開催カレンダー <span class="ar">→</span></a>
+        </div>
+      </div>
+      <div class="hero__vis rv rv-d2">
+        <div class="collage">
+          <div class="ph ph--a"><img src="images/s1.jpg" alt="まちゼミのようす"></div>
+          <div class="ph ph--b"><img src="images/s2.jpg" alt="まちゼミのようす"></div>
+          <div class="ph ph--c"><img src="images/c04.jpg" alt="まちゼミのようす"></div>
+          <div class="seal" aria-hidden="true">
+            <div class="seal__bg"></div>
+            <svg class="seal__ring" viewBox="0 0 148 148">
+              <defs><path id="sealcirc" d="M74 74 m -58 0 a 58 58 0 1 1 116 0 a 58 58 0 1 1 -116 0"/></defs>
+              <text><textPath href="#sealcirc" textLength="362">得する街のゼミナール ● ばんげのまちゼミ ● 会津坂下町 ● </textPath></text>
+            </svg>
+            <div class="seal__core"><span data-f="sealTop"></span><strong data-f="sealMain"></strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hero__spine" aria-hidden="true">お店の人が、先生です。</p>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">ABOUT</p>
+        <h2>まちゼミとは<span class="mark">。</span></h2>
+        <p class="lead">町の商店の方が講師となり、プロの技を少しだけ教えてもらえる地域密着型のゼミナールです。お店の存在や特徴を知っていただき、お客様との信頼関係を築くことを目的にしています。</p>
+      </div>
+      <div class="about__cards">
+        <div class="card rv"><span class="idx">01</span><h3>お店の人が、先生。</h3><p>講師をつとめるのは、坂下のお店の方々。ふだんの買い物では聞けないプロの知識やコツを、直接教わることができます。</p></div>
+        <div class="card rv rv-d1"><span class="idx">02</span><h3>プロの技を、少しだけ。</h3><p>お店で長く培われてきた技の一端を、気軽に学べるゼミ形式で。知って、試して、暮らしがちょっと楽しくなります。</p></div>
+        <div class="card rv rv-d2"><span class="idx">03</span><h3>お店と、もっと近くに。</h3><p>お店を知り、人を知ることで生まれる信頼関係。まちゼミは、お店とお客様、そして町をつなぐ取り組みです。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 講座一覧 -->
+  <section class="section courses" id="courses">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">COURSES</p>
+        <h2>講座一覧<span class="mark">。</span></h2>
+        <p class="lead">お申込みは各店舗へ直接お電話ください。スマートフォンの方は電話番号をタップするとそのまま発信できます。</p>
+      </div>
+      <div class="filter rv" id="filter"></div>
+      <div class="cgrid" id="cgrid"></div>
+      <p class="noresult" id="noresult" hidden>該当する講座がありません。</p>
+    </div>
+  </section>
+
+  <!-- 開催カレンダー -->
+  <section class="section" id="calendar">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">CALENDAR</p>
+        <h2>開催カレンダー<span class="mark">。</span></h2>
+        <p class="lead">色のついた日に講座があります。日付をタップすると、その日の講座が表示されます。</p>
+      </div>
+      <div class="calwrap rv" id="calwrap"></div>
+      <div class="callegend rv">
+        <span class="k"><i style="background:var(--c-tsukuru)"></i>つくる・食べる</span>
+        <span class="k"><i style="background:var(--c-manabu)"></i>まなぶ</span>
+        <span class="k"><i style="background:var(--c-kenko)"></i>健康・きれい</span>
+      </div>
+      <p class="calhint rv">※日程が決まっていない講座(お客様のご都合に合わせる講座)はカレンダーに表示されません。講座一覧をご覧ください。</p>
+    </div>
+  </section>
+
+  <section class="section scene">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">SCENES</p>
+        <h2>開催のようす<span class="mark">。</span></h2>
+        <p class="lead">お店の中が、その日だけの小さな教室になります。</p>
+      </div>
+      <div class="scene__grid">
+        <figure class="rv"><img src="images/s1.jpg" loading="lazy" data-zoom alt="フラワーアレンジメント教室のようす"></figure>
+        <figure class="rv rv-d1"><img src="images/s2.jpg" loading="lazy" data-zoom alt="ミニ畳作りのようす"></figure>
+        <figure class="rv rv-d2"><img src="images/c04.jpg" loading="lazy" data-zoom alt="キムチ講座のようす"></figure>
+        <figure class="rv"><img src="images/c13.jpg" loading="lazy" data-zoom alt="そば打ち体験のようす"></figure>
+        <figure class="rv rv-d1"><img src="images/s3.jpg" loading="lazy" data-zoom alt="江川畳店でのまちゼミのようす"></figure>
+        <figure class="rv rv-d2"><img src="images/c08.jpg" loading="lazy" data-zoom alt="ミニ畳の作品"></figure>
+      </div>
+      <p class="scene__foot">※本ページに掲載の写真は、各まちゼミ参加店舗より許可を得て使用しています。</p>
+    </div>
+  </section>
+
+  <section class="section" id="flyer">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">FLYER</p>
+        <h2>チラシ<span class="mark">。</span></h2>
+        <p class="lead">画像をタップすると拡大できます。</p>
+      </div>
+      <div class="flyer__grid">
+        <figure class="flyer__item rv"><img src="images/flyer-front.jpg" loading="lazy" data-zoom alt="まちゼミ チラシ おもて面"><figcaption>おもて面 <em>TAP TO ZOOM</em></figcaption></figure>
+        <figure class="flyer__item rv rv-d1"><img src="images/flyer-courses.jpg" loading="lazy" data-zoom alt="まちゼミ チラシ 講座一覧"><figcaption>講座一覧 <em>TAP TO ZOOM</em></figcaption></figure>
+      </div>
+      <dl class="info rv" id="info"></dl>
+    </div>
+  </section>
+</main>
+
+<footer class="ft">
+  <a class="totop" href="#top" aria-label="先頭へ">↑</a>
+  <img class="ft__logo" src="images/logo.svg" alt="">
+  <p class="ft__name">ばんげのまちゼミ</p>
+  <p class="ft__tag">TOKUSURU MACHI NO SEMINAR</p>
+  <p class="ft__org">主催:<span data-f="organizer"></span></p>
+  <p class="ft__note">※本ページに掲載の写真は、各まちゼミ参加店舗より許可を得て使用しています。</p>
+</footer>
+
+<div class="lb" id="lb"><button class="lb__x" id="lbx" aria-label="閉じる">✕</button><img id="lbimg" alt=""></div>
+
+<script>
+/* ==================================================================
+   ▼▼▼ ここから下だけ書き換えれば OK ▼▼▼
+   チラシが確定したら、このデータを差し替えてください。
+   講座カード・カレンダー・電話リンクはすべて自動で作られます。
+   ================================================================== */
+
+const EVENT = {
+  edition:    "第17回",
+  periodShort:"2026.9.19 SAT — 12.19 SAT",
+  period:     "令和8年9月19日(土)〜12月19日(土)",
+  entryStart: "令和8年9月1日(火)",
+  organizer:  "会津坂下町商工会 商業部会",
+  hashtag:    "#ばんげまちゼミ",
+  sealTop:    "全",
+  sealMain:   "",
+};
+
+/* 講座データ
+   cat  : "tsukuru"(つくる・食べる) / "manabu"(まなぶ) / "kenko"(健康・きれい)
+   slots: 時間帯ごとに { time, dates:["YYYY-MM-DD", ...] }
+   dayNote: 日程が固定でない場合の自由記述(この場合 slots は空配列に)
+   tel  : 空欄にすると、代わりに mail の宛先ボタンが出ます */
+const COURSES = [
+{ no:1, cat:"tsukuru", title:"『蘇るアナログカメラ』カメラ無料診断",
+  photo:"images/c01.jpg", pos:"center", fit:"cover",
+  links:[{u:"https://www.instagram.com/kemuripro2023/",t:"sns",i:"instagram"}],
+  desc:"昭和レトロなカメラが人気です。眠っている思い出のカメラを機能診断してみませんか？処分するにはもったいない「お宝」があるかも!!",
+  slots:[{time:"10:00〜15:00",dates:["2026-09-27","2026-11-08"]}], dayNote:"",
+  target:"どなたでも", bring:"1980年以前に製造された「アナログカメラ」など", teacher:"伊藤文昭",
+  fee:"なし", cap:"なし", venue:"会津坂下中央公民館1階ロビー", note:"",
+  shopSub:"", shop:"ネットショップ「けむりぷろ2023」", addr:"会津坂下町字四十石322-30(介護タクシーひまわり)",
+  tel:"0242-83-5506", mail:"", hours:"受付:8:00〜17:00/休:日曜日", cashless:false },
+
+{ no:2, cat:"tsukuru", title:"世界を旅するコーヒー紀行",
+  photo:"images/c02.jpg", pos:"42% center", fit:"cover",
+  links:[{u:"https://www.instagram.com/fattoria.comoto",t:"sns",i:"instagram"}],
+  desc:"国ごとに変わる、コーヒーの個性をゆっくりと飲み比べるひととき。難しい技術は使わず、自分の「好き」を探しませんか？",
+  slots:[{time:"15:30〜17:00",dates:["2026-10-09","2026-10-16","2026-10-23"]}], dayNote:"",
+  target:"どなたでも", bring:"なし", teacher:"五十嵐 玄",
+  fee:"800円", cap:"6名", venue:"", note:"",
+  shopSub:"", shop:"(株)ファットリアこもと", addr:"会津坂下町坂本字糠塚乙1144",
+  tel:"0242-83-1101", mail:"", hours:"受付:9:00〜19:00／定休日:月曜・第3火曜", cashless:false },
+
+{ no:3, cat:"tsukuru", title:"暮らしを彩るクラフト講座",
+  photo:"images/c03.jpg", pos:"center 55%", fit:"cover",
+  links:[{u:"https://www.instagram.com/fattoria.comoto",t:"sns",i:"instagram"}],
+  desc:"流木を生かして、日常を彩るポプリを製作します。ラベンダーなどのハーブを使い、やさしい香りに仕立て上げます。",
+  slots:[{time:"15:30〜17:00",dates:["2026-10-07"]}], dayNote:"",
+  target:"どなたでも", bring:"なし", teacher:"飯塚節子",
+  fee:"1,000円", cap:"6名", venue:"", note:"",
+  shopSub:"", shop:"(株)ファットリアこもと", addr:"会津坂下町坂本字糠塚乙1144",
+  tel:"0242-83-1101", mail:"", hours:"受付:9:00〜19:00／定休日:月曜・第3火曜", cashless:false },
+
+{ no:4, cat:"tsukuru", title:"おいしいキムチの作り方講座",
+  photo:"images/c04.jpg", pos:"center 38%", fit:"cover",
+  links:[{u:"https://www.instagram.com/snackyukali_bnge/",t:"sns",i:"instagram"}],
+  desc:"キムチの作り方を学べます。",
+  slots:[{time:"10:00〜13:00",dates:["2026-12-06"]}], dayNote:"",
+  target:"どなたでも", bring:"エプロン、三角巾", teacher:"小林由加李",
+  fee:"2,000円", cap:"10名", venue:"八幡コミュニティセンター", note:"申込は、9月1日〜15日までの間",
+  shopSub:"", shop:"スナック ゆかり", addr:"会津坂下町市中二番甲3681-1 ビーノクラブ2F",
+  tel:"090-2987-4767", mail:"", hours:"", cashless:false },
+
+{ no:5, cat:"kenko", title:"骨密度 測定会",
+  photo:"images/c05.jpg", pos:"center", fit:"contain",
+  links:[{u:"https://www.instagram.com/kenkodo_/",t:"sns",i:"instagram"}],
+  desc:"機器に「手首」をのせて測定します。測定値の解説とワンポイントアドバイスを含めて、1人15分程度の講座です。",
+  slots:[{time:"14:00〜15:00",dates:["2026-09-21","2026-09-22","2026-09-23","2026-09-24"]}], dayNote:"",
+  target:"18歳以上", bring:"なし", teacher:"登録販売者 廣木佳奈子",
+  fee:"500円", cap:"4名または2組", venue:"", note:"",
+  shopSub:"くすりと化粧品の", shop:"ケンコー堂", addr:"会津坂下町市中二番甲3610番地",
+  tel:"0242-83-2343", mail:"", hours:"受付:10:00〜17:00/休:日曜日", cashless:true },
+
+{ no:6, cat:"tsukuru", title:"はじめての遠近両用",
+  desc:"小さい文字が見えづらくなったけど、遠近両用ってどうなの？室内用の中近両用など、実際に視力検査をしてから体験していただきます。",
+  slots:[{time:"11:00〜12:00",dates:["2026-09-22","2026-09-23"]},
+         {time:"10:00〜11:00",dates:["2026-09-24","2026-09-25"]}], dayNote:"",
+  target:"どなたでも", bring:"普段かけているメガネ", teacher:"小平徹",
+  fee:"なし", cap:"2名または1組", venue:"", note:"",
+  shopSub:"", shop:"(株)メガネの幸福堂", addr:"会津坂下町市中二番甲3638",
+  tel:"0242-83-2996", mail:"", hours:"受付:10:00〜17:00/休:日曜日", cashless:true },
+
+{ no:7, cat:"tsukuru", title:"はじめての補聴器講座",
+  photo:"images/c07.jpg", pos:"center 62%", fit:"cover",
+  desc:"補聴器とはどんなもの？いくらぐらいするの？自分の聴力はどのくらい？など本当に知りたい補聴器情報の講座です。補聴器の試聴体験もできます！",
+  slots:[{time:"10:00〜11:00",dates:["2026-10-05","2026-10-06","2026-10-09"]},
+         {time:"11:00〜12:00",dates:["2026-10-10"]}], dayNote:"",
+  target:"少しでも聞こえに不自由を感じている方", bring:"なし", teacher:"小平徹",
+  fee:"なし", cap:"1名または1組", venue:"", note:"",
+  shopSub:"", shop:"(株)メガネの幸福堂", addr:"会津坂下町市中二番甲3638",
+  tel:"0242-83-2996", mail:"", hours:"受付:10:00〜17:00/休:日曜日", cashless:true },
+
+{ no:8, cat:"tsukuru", title:"あなただけのオリジナルミニ畳作り",
+  photo:"images/c08.jpg", pos:"center", fit:"cover",
+  links:[{u:"https://www.facebook.com/p/%E6%B1%9F%E6%88%B8%E6%99%82%E4%BB%A3%E3%81%8B%E3%82%89%E7%B6%9A%E3%81%8F%E7%95%B3%E5%B1%8B%E3%81%95%E3%82%93%E6%B1%9F%E5%B7%9D%E7%95%B3%E5%BA%97-100063496872861/",t:"sns",i:"facebook"},
+         {u:"https://egawa-tatamiten.jimdosite.com/",t:"hp",i:"web"}],
+  desc:"お好きな布地を畳縁にしてあなただけのオリジナルのミニ畳を作ってみましょう。※布がない場合、当店の畳縁を使います。",
+  slots:[{time:"9:00〜11:00",dates:["2026-10-11","2026-11-08"]}], dayNote:"",
+  target:"どなたでも", bring:"ハサミ(大型のもの)、定規、鉛筆、お好きな布地(30cm×10cm×4枚)", teacher:"江川博幸",
+  fee:"1,000円", cap:"各回4名", venue:"", note:"",
+  shopSub:"江戸時代から続く畳やさん", shop:"江川畳店", addr:"会津坂下町市中四番甲3750",
+  tel:"0242-83-1164", mail:"", hours:"受付:9:00〜17:00/休:日曜・祝日", cashless:false },
+
+{ no:9, cat:"tsukuru", title:"こけ玉教室",
+  photo:"images/c09.jpg", pos:"center 62%", fit:"cover",
+  links:[{u:"https://www.instagram.com/8787bange_satou_seika/",t:"sns",i:"instagram"}],
+  desc:"数種類の花材の中から選択し、自分だけのオリジナルなこけ玉を作りましょう。",
+  slots:[{time:"10:30〜",dates:["2026-10-06","2026-10-13","2026-10-20","2026-10-27","2026-11-17","2026-11-24"]}], dayNote:"",
+  target:"どなたでも", bring:"汚れて良いもの、エプロン等", teacher:"佐藤和弘",
+  fee:"1,500円", cap:"6名", venue:"", note:"",
+  shopSub:"まちの駅 はな花", shop:"(有)佐藤生花店", addr:"会津坂下町古町字川尻459-1(セブンイレブン古町店となり)",
+  tel:"0242-83-2739", mail:"", hours:"受付:9:00〜18:00/休:不定休", cashless:false },
+
+{ no:10, cat:"tsukuru", title:"フラワーアレンジメント教室",
+  photo:"images/c10.jpg", pos:"center 55%", fit:"cover",
+  links:[{u:"https://www.instagram.com/8787bange_satou_seika/",t:"sns",i:"instagram"}],
+  desc:"季節の花を用いて癒しの空間を演出。楽しく、やさしく作りましょう。",
+  slots:[{time:"10:30〜",dates:["2026-09-30","2026-10-07","2026-10-21","2026-10-28","2026-11-06","2026-11-18"]}], dayNote:"",
+  target:"どなたでも", bring:"汚れて良いもの、エプロン等", teacher:"佐藤和弘",
+  fee:"3,000円", cap:"6名", venue:"", note:"",
+  shopSub:"まちの駅 はな花", shop:"(有)佐藤生花店", addr:"会津坂下町古町字川尻459-1(セブンイレブン古町店となり)",
+  tel:"0242-83-2739", mail:"", hours:"受付:9:00〜18:00/休:不定休", cashless:false },
+
+{ no:11, cat:"manabu", title:"あるくメカトロウィーゴでプログラミング体験",
+  photo:"images/c11.jpg", pos:"center", fit:"cover",
+  desc:"二足歩行ロボットでプログラミングの楽しさを体験できる！どなたでも参加可能です。みんなでワクワクしよう！",
+  slots:[{time:"① 9:30〜10:30",dates:["2026-10-18","2026-11-14"]},
+         {time:"② 11:00〜12:00",dates:["2026-10-18","2026-11-14"]}], dayNote:"",
+  target:"小学生1〜3年生の親子向けの内容になります", bring:"なし", teacher:"歌川浩一",
+  fee:"なし", cap:"4組", venue:"会津坂下町商工会館", note:"PCのトラブル等、困ったらまずはご相談を。(協力:喜多方市(株)アクシス)",
+  shopSub:"", shop:"(有)歌川商店", addr:"会津坂下町字内86",
+  tel:"", mail:"utagawa@us-pc.jp",
+  form:"https://docs.google.com/forms/d/e/1FAIpQLSdlXdpHICt4ThSr5Fk8-itnYYTrezx9nqMxD6jjKD8jwPzQbQ/viewform",
+  hours:"", cashless:false },
+
+{ no:12, cat:"manabu", title:"遺影は笑顔で！",
+  photo:"images/c12.jpg", pos:"center 28%", fit:"cover",
+  links:[{u:"https://www.instagram.com/photostudio_hara/",t:"sns",i:"instagram"},
+         {u:"https://hara-photo.com/",t:"hp",i:"web"}],
+  desc:"「縁起でもない」は、一昔前の話。最近では生前に遺影用の写真を撮影したい、という人が増えています。通常価格11,000円キャビネットプリント(額付き)。",
+  slots:[{time:"①13:30〜 ②14:00〜 ③14:30〜",dates:["2026-09-18","2026-10-01","2026-10-29","2026-11-17"]}], dayNote:"",
+  target:"70歳以上の方", bring:"お気に入りの帽子、杖など、アクセサリー", teacher:"原健一郎",
+  fee:"4,800円", cap:"各回1名", venue:"", note:"",
+  shopSub:"", shop:"(有)フォトスタジオ原", addr:"会津坂下町市中四番甲3765-1",
+  tel:"0242-83-2139", mail:"", hours:"受付:9:00〜18:00/休:月曜日(祝日の場合は翌日)", cashless:true },
+
+{ no:13, cat:"tsukuru", title:"そば打ち体験",
+  photo:"images/c13.jpg", pos:"center 55%", fit:"cover",
+  links:[{u:"https://www.instagram.com/wakamiya_bakusaku/",t:"sns",i:"instagram"}],
+  desc:"十割そばのそば打ちを講習します。また、そば茹でで指導と試食も行います。見学自由。",
+  slots:[{time:"①10:00〜12:00",dates:["2026-11-28"]},{time:"②13:00〜15:00",dates:["2026-11-28"]}], dayNote:"",
+  target:"15歳以上", bring:"エプロン", teacher:"内海宙士",
+  fee:"2,000円", cap:"各時間6名", venue:"若宮コミュニティセンター", note:"",
+  shopSub:"", shop:"(株)若宮ばくさく", addr:"会津坂下町牛川字寿ノ宮1905",
+  tel:"0242-85-8861", mail:"", hours:"受付:10:00〜17:00/休:日曜・祝日", cashless:false },
+
+{ no:14, cat:"tsukuru", title:"天然醸造みそ作り体験",
+  photo:"images/c14.jpg", pos:"center", fit:"cover",
+  desc:"みそについて学ぶ、作るが体験できます。各自約6kgのみそをお持ち帰り頂けます。樽持込みの場合、体験料より500円引き。",
+  slots:[{time:"13:00〜15:00",dates:["2026-09-26","2026-10-17","2026-11-28"]}], dayNote:"",
+  target:"どなたでも", bring:"エプロン、三角巾", teacher:"目黒正博",
+  fee:"4,450円", cap:"各回30名", venue:"", note:"キャンセルは3日前までにご連絡ください。駐車場が狭いため、乗り合いでのご協力をお願いします。",
+  shopSub:"会津坂下町", shop:"目黒麹店", addr:"会津坂下町三谷字佐藤分670-2",
+  tel:"0242-83-3723", mail:"", hours:"受付:8:00〜17:00/休:不定休", cashless:true },
+
+{ no:15, cat:"tsukuru", title:"遭遇を回避せよ！命を守る熊よけ鈴作り",
+  photo:"images/c15.jpg", pos:"38% center", fit:"cover",
+  links:[{u:"https://www.instagram.com/mitoya_shugei_aizu/",t:"sns",i:"instagram"},
+         {u:"https://www.mitoya-shugei.co.jp/",t:"hp",i:"web"}],
+  desc:"丈夫なコードで編み込み、消音もできる一体型設計。自分だけの熊よけ鈴を作りましょう！初めての方も大歓迎です。",
+  slots:[{time:"10:00〜12:00",dates:["2026-09-25","2026-10-02"]}], dayNote:"",
+  target:"10歳以上", bring:"なし", teacher:"佐竹源弘",
+  fee:"1,000円", cap:"6名", venue:"", note:"",
+  shopSub:"", shop:"手芸のみとや", addr:"会津坂下町字松ノ目1570-1",
+  tel:"0242-83-3400", mail:"", hours:"受付:9:30〜18:00/休:水曜", cashless:true },
+];
+
+/* ▲▲▲ 書き換えるのはここまで ▲▲▲ ================================= */
+
+const CATS = {
+  tsukuru:{ label:"つくる・食べる", color:"var(--c-tsukuru)" },
+  manabu: { label:"まなぶ",         color:"var(--c-manabu)"  },
+  kenko:  { label:"健康・きれい",   color:"var(--c-kenko)"   },
+};
+const WD = ["日","月","火","水","木","金","土"];
+const ICON = {
+  instagram:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>`,
+  facebook:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+  web:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+};
+const esc = s => String(s??"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtDay = iso => { const d=new Date(iso+"T00:00:00"); return `${d.getMonth()+1}/${d.getDate()}(${WD[d.getDay()]})`; };
+
+/* 画像 */
+
+/* イベント情報の差し込み */
+const FIELDS = {...EVENT, sealMain: EVENT.sealMain || `${COURSES.length}講座`};
+document.querySelectorAll('[data-f]').forEach(el => { el.textContent = FIELDS[el.dataset.f] || ""; });
+document.title = `${EVENT.edition} ばんげのまちゼミ|坂下のお店で、プロに学ぶ。`;
+
+/* ティッカー */
+const tickItems = [
+  `${EVENT.edition} ばんげのまちゼミ`,
+  `会期 <em class="num">${esc(EVENT.periodShort)}</em>`,
+  `全<em class="num">${COURSES.length}</em>講座`,
+  `お申込みは各店舗へ`,
+  `お店の人が先生です`,
+  esc(EVENT.hashtag),
+];
+document.getElementById('ticker').innerHTML =
+  `<div class="ticker__group">${tickItems.map(t=>`<span>${t}</span>`).join("")}</div>`.repeat(2);
+
+/* 開催概要 */
+document.getElementById('info').innerHTML = [
+  ["DATE / 会期",      `<strong>${esc(EVENT.period)}</strong>`],
+  ["ENTRY / お申込み", `<strong>${esc(EVENT.entryStart)} 受付開始</strong><br>各講座とも、直接各店舗へお電話にてお申込みください。`],
+  ["COURSES / 講座数", `<strong>全${COURSES.length}講座</strong>`],
+  ["HOST / 主催",      `<strong>${esc(EVENT.organizer)}</strong>`],
+].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+
+/* フィルター */
+const filterEl = document.getElementById('filter');
+filterEl.innerHTML =
+  `<button class="chip" data-cat="all" aria-pressed="true">すべて (${COURSES.length})</button>` +
+  Object.entries(CATS).map(([k,v])=>{
+    const n = COURSES.filter(c=>c.cat===k).length;
+    return n ? `<button class="chip" data-cat="${k}" aria-pressed="false"><i class="dot"></i>${v.label} (${n})</button>` : "";
+  }).join("");
+
+/* 講座カード */
+function cardHTML(c){
+  const cc = CATS[c.cat]?.color || "var(--red)";
+  const when = c.slots.length
+    ? c.slots.map(s=>`<div class="course__slot">
+         <p class="course__time">${esc(s.time)}</p>
+         <div class="course__days">${s.dates.map(d=>`<span class="course__day">${fmtDay(d)}</span>`).join("")}</div>
+       </div>`).join("")
+    : `<p class="course__daynote">${esc(c.dayNote)}</p>`;
+
+  const spec = [
+    ["対象", c.target], ["持ち物", c.bring], ["講師", c.teacher],
+    c.venue ? ["会場", c.venue] : null,
+  ].filter(Boolean).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+
+  const feePill = (!c.fee || /^なし$/.test(c.fee))
+    ? `<span class="pill pill--free">参加費 無料</span>`
+    : `<span class="pill pill--fee">参加費 ${esc(c.fee)}</span>`;
+
+  const photo = c.photo
+    ? `<figure class="course__ph${c.fit==="contain"?" is-contain":""}">
+         <img src="${c.photo}" loading="lazy" data-zoom alt="${esc(c.title)}のイメージ" style="object-position:${c.pos||"center"}">
+       </figure>`
+    : "";
+
+  return `<article class="course" style="--cc:${cc}" data-cat="${c.cat}" id="course-${c.no}">
+    ${photo}
+    <div class="course__top">
+      <span class="course__no">${c.no}</span>
+      <div class="course__hd">
+        <span class="course__cat">${esc(CATS[c.cat]?.label||"")}</span>
+        <h3>${esc(c.title)}</h3>
+      </div>
+    </div>
+    <p class="course__desc">${esc(c.desc)}</p>
+    <div class="course__when">${when}</div>
+    <dl class="course__spec">${spec}</dl>
+    <div class="course__pills">${feePill}<span class="pill pill--cap">定員 ${esc(c.cap)}</span></div>
+    ${c.note ? `<p class="course__note">※${esc(c.note)}</p>` : ""}
+    <div class="course__shop">
+      ${c.shopSub ? `<p class="course__shopsub">${esc(c.shopSub)}</p>` : ""}
+      <p class="course__shopname">${esc(c.shop)}</p>
+      <p class="course__addr">${esc(c.addr)}</p>
+      ${c.form
+        ? `<a class="telbtn" href="${esc(c.form)}" target="_blank" rel="noopener">
+             <svg class="telbtn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+             <span class="telbtn__t"><b class="frm">申込フォームへ</b><span>タップして受付フォームを開きます</span></span>
+           </a>
+           ${c.mail ? `<p class="course__sub2">お問い合わせ:<a href="mailto:${esc(c.mail)}">${esc(c.mail)}</a></p>` : ""}`
+        : `<a class="telbtn" href="${c.tel ? `tel:${c.tel.replace(/[^0-9]/g,"")}` : `mailto:${c.mail}`}">
+        ${c.tel
+          ? `<svg class="telbtn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+             <span class="telbtn__t"><b>${esc(c.tel)}</b><span>タップしてお申込み</span></span>`
+          : `<svg class="telbtn__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+             <span class="telbtn__t"><b class="mail">${esc(c.mail)}</b><span>メールでお申込み</span></span>`}
+      </a>`}
+      ${c.hours ? `<p class="course__hours">${esc(c.hours)}</p>` : ""}
+      ${(c.cashless || (c.links||[]).length) ? `<div class="course__meta">
+        ${c.cashless ? `<span class="tagchip">キャッシュレス対応</span>` : ""}
+        ${(c.links||[]).map(l => `<a class="tagchip tagchip--link" href="${esc(l.u)}" target="_blank" rel="noopener">${ICON[l.i]||ICON.web}${l.t === "hp" ? "HP" : "SNS"}<span class="ex">↗</span></a>`).join("")}
+      </div>` : ""}
+    </div>
+  </article>`;
+}
+const grid = document.getElementById('cgrid');
+grid.innerHTML = COURSES.map(cardHTML).join("");
+
+/* フィルター動作 */
+const noresult = document.getElementById('noresult');
+filterEl.addEventListener('click', e => {
+  const btn = e.target.closest('.chip'); if(!btn) return;
+  filterEl.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed', b===btn));
+  const cat = btn.dataset.cat; let shown = 0;
+  grid.querySelectorAll('.course').forEach(el=>{
+    const ok = cat==='all' || el.dataset.cat===cat;
+    el.hidden = !ok; if(ok) shown++;
+  });
+  noresult.hidden = shown > 0;
+});
+
+/* カレンダー生成 */
+const dayMap = {};
+COURSES.forEach(c => c.slots.forEach(s => s.dates.forEach(d => {
+  (dayMap[d] ||= []).push(c);
+})));
+const allDates = Object.keys(dayMap).sort();
+if (allDates.length){
+  const first = new Date(allDates[0]+"T00:00:00"), last = new Date(allDates.at(-1)+"T00:00:00");
+  let cur = new Date(first.getFullYear(), first.getMonth(), 1);
+  const months = [];
+  while (cur <= last){ months.push(new Date(cur)); cur.setMonth(cur.getMonth()+1); }
+
+  document.getElementById('calwrap').innerHTML = months.map(m=>{
+    const y=m.getFullYear(), mo=m.getMonth();
+    const start=new Date(y,mo,1).getDay(), len=new Date(y,mo+1,0).getDate();
+    let cells="";
+    for(let i=0;i<start;i++) cells+="<td></td>";
+    for(let d=1;d<=len;d++){
+      const iso=`${y}-${String(mo+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+      const list=dayMap[iso], dow=new Date(y,mo,d).getDay();
+      const cls=["day", dow===0?"sun":dow===6?"sat":"", list?"has":""].filter(Boolean).join(" ");
+      const dots=list ? `<span class="day__dots">${[...new Set(list.map(c=>c.cat))].map(k=>`<i style="background:${CATS[k].color}"></i>`).join("")}</span>` : "";
+      cells+=`<td><${list?`button type="button" class="${cls}" data-date="${iso}"`:`span class="${cls}"`}>${d}${dots}</${list?"button":"span"}></td>`;
+      if((start+d)%7===0) cells+="</tr><tr>";
+    }
+    return `<div class="month"><p class="month__t">${mo+1}月 <em>${y}</em></p>
+      <table><thead><tr>${WD.map((w,i)=>`<th class="${i===0?"sun":i===6?"sat":""}">${w}</th>`).join("")}</tr></thead>
+      <tbody><tr>${cells}</tr></tbody></table></div>`;
+  }).join("");
+
+  /* 日付タップ → その日の講座を表示 */
+  document.getElementById('calwrap').addEventListener('click', e=>{
+    const btn=e.target.closest('.day.has'); if(!btn) return;
+    const nos=new Set(dayMap[btn.dataset.date].map(c=>c.no));
+    filterEl.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed', b.dataset.cat==='all'));
+    let firstEl=null;
+    grid.querySelectorAll('.course').forEach(el=>{
+      const on=nos.has(Number(el.id.replace('course-','')));
+      el.hidden=!on; el.classList.toggle('hl',on);
+      if(on && !firstEl) firstEl=el;
+    });
+    noresult.hidden=true;
+    firstEl?.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>grid.querySelectorAll('.course').forEach(el=>el.classList.remove('hl')),2600);
+  });
+}
+
+/* ヘッダー影・出現アニメ・ライトボックス */
+const hd=document.getElementById('hd');
+addEventListener('scroll',()=>hd.classList.toggle('hd--s',scrollY>10),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const lb=document.getElementById('lb'), lbimg=document.getElementById('lbimg');
+document.querySelectorAll('[data-zoom]').forEach(el=>el.addEventListener('click',()=>{
+  lbimg.src=el.src; lbimg.alt=el.alt; lb.classList.add('on'); document.body.style.overflow='hidden';
+}));
+const lbClose=()=>{lb.classList.remove('on');document.body.style.overflow='';lbimg.src=''};
+lb.addEventListener('click',e=>{if(e.target!==lbimg)lbClose()});
+document.getElementById('lbx').addEventListener('click',lbClose);
+addEventListener('keydown',e=>{if(e.key==='Escape')lbClose()});
+</script>
+</body>
+</html>
